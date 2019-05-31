@@ -1,0 +1,12 @@
+form {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  padding: 10px;
+}
+
+mat-card {
+  margin: 20%;
+}

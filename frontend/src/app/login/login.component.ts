@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { JwtService } from '../jwt.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -7,9 +9,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
-  constructor() { }
+  email     = "";
+  password  = "";
+  error     = "";
+
+  constructor(private jwtService: JwtService, private router: Router) { }
 
   ngOnInit() {
+  }
+
+  public login() {
+    this.jwtService.login(this.email, this.password).subscribe(
+      (res) => this.router.navigate(['contact-list']),
+      (err) => this.error = 'Authentication Error'
+    );
   }
 
 }
