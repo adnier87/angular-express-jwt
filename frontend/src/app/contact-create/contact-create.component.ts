@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from "@angular/forms";
+import { ApiService } from '../api.service';
 
 @Component({
   selector: 'app-contact-create',
@@ -9,20 +10,20 @@ import { FormGroup, FormControl, Validators } from "@angular/forms";
 export class ContactCreateComponent implements OnInit {
 
   public contactForm = new FormGroup({
-    firstName: new FormControl("", [Validators.required]),
-    lastName: new FormControl("", [Validators.required]),
-    email: new FormControl(
+    firstName : new FormControl("", [Validators.required]),
+    lastName  : new FormControl("", [Validators.required]),
+    email     : new FormControl(
       "",
       [Validators.required,
       Validators.pattern('[a-zA-Z0-9_\.]+@[a-zA-Z]+\.[a-zA-Z]+')]
     ),
-    phone: new FormControl("", [Validators.pattern('[0-9]+')]),
-    city: new FormControl(),
-    country: new FormControl(),
-    title: new FormControl()
+    phone     : new FormControl("", [Validators.pattern('[0-9]+')]),
+    city      : new FormControl(),
+    country   : new FormControl(),
+    title     : new FormControl()
   })
 
-  constructor() { }
+  constructor(private apiService: ApiService) { }
 
   ngOnInit() {
   }
