@@ -1,0 +1,25 @@
+<form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+    <input matInput placeholder="First Name" formControlName="firstName" name="firstName">
+    <input matInput placeholder="Last Name" formControlName="lastName" name="lastName">
+    <input matInput placeholder="Email" formControlName="email" name="email">
+    <input matInput placeholder="Phone" formControlName="phone" name="phone">
+    <input matInput placeholder="City" formControlName="city" name="city">
+    <input matInput placeholder="Country" formControlName="country" name="country">
+    <input matInput placeholder="Title" formControlName="title" name="title">
+    <button mat-raised-button type="submit" color="primary">Create</button>
+    <div *ngIf="email.touched && email.errors">
+      <span *ngIf="email.errors.required">
+        The email is required
+      </span>
+    </div>
+    <div *ngIf="email.errors">
+      <span *ngIf="email.errors.pattern">
+        The email is no valid
+      </span>
+    </div>
+    <div *ngIf="phone.errors">
+      <span *ngIf="phone.errors.pattern">
+        The phone is no valid
+      </span>
+    </div>
+</form>
