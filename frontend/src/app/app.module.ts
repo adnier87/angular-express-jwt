@@ -7,7 +7,8 @@ import {
   MatFormFieldModule,
   MatTableModule,
   MatDialogModule,
-  MatCardModule
+  MatCardModule,
+  MatIconModule
 } from "@angular/material";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { HttpClientModule } from "@angular/common/http";
@@ -42,6 +43,7 @@ import { LoginComponent } from './login/login.component';
     MatTableModule,
     MatDialogModule,
     MatCardModule,
+    MatIconModule,
     FormsModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,

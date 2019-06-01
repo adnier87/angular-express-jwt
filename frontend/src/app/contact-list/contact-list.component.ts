@@ -3,6 +3,7 @@ import { ApiService } from "../api.service";
 import { Contact } from "../contact";
 import { ContactDetailComponent } from '../contact-detail/contact-detail.component';
 import { MatDialog } from '@angular/material';
+import { ContactUpdateComponent } from '../contact-update/contact-update.component';
 
 @Component({
   selector: 'app-contact-list',
@@ -59,7 +60,28 @@ export class ContactListComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
+    });
+  }
 
+  editContact(contact: Contact): void {
+    console.log(contact);
+    const dialogRef = this.dialog.open(ContactUpdateComponent, {
+      width: '80%',
+      data: contact
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The edit dialog was closed!');
+      this.apiService.getContacts(this.apiService.current).subscribe((res)=>{
+        console.log(res.body);
+        this.dataSource = res.body;
+      })
+    })
+  }
+
+  deleteContact(id: number): void {
+    this.apiService.deleteContact(id).subscribe(res => {
+      console.log('Contact deleted!');
     });
   }
 

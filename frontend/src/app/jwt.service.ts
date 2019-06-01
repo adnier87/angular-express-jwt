@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from 'selenium-webdriver/http';
+import { HttpClient } from '@angular/common/http';
+import { tap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -9,8 +10,8 @@ export class JwtService {
   constructor(private httpCliente: HttpClient) { }
 
   login(email: string, password: string) {
-    return this.httpCliente.post<{access_token: string}>('auth/login', {email, password}).pipe(tap(res => {
-      localStorage.setItem('access_token', res.access_token)
+    return this.httpCliente.post<{access_token: string}>('http://localhost:3000/auth/login', {email, password}).pipe(tap((res) => {
+      localStorage.setItem('access_token', res.access_token);
     }))
   }
 
